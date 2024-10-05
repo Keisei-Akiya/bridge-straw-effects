@@ -1552,6 +1552,25 @@ files = [
 wcwidth = "*"
 
 [[package]]
+name = "psmpy"
+version = "0.3.13"
+description = "Propensity score matching for python and graphical plots"
+optional = false
+python-versions = "*"
+files = [
+    {file = "psmpy-0.3.13-py3-none-any.whl", hash = "sha256:3be151057fad021a08493f40dc4ed56e4a31402ec905bf50298789526acd8540"},
+    {file = "psmpy-0.3.13.tar.gz", hash = "sha256:13dcda62a6745ec53d2ee6834e987f50415f8cb21e1a1d47bc8a9fd2daf317d4"},
+]
+
+[package.dependencies]
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+scikit-learn = "*"
+scipy = "*"
+seaborn = "*"
+
+[[package]]
 name = "psutil"
 version = "6.0.0"
 description = "Cross-platform lib for process and system monitoring in Python."
@@ -2279,4 +2298,4 @@ test = ["hypothesis", "packaging", "pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "2ff3d32955883b0c5ed89026ec2f238b4249f8f777901ab3911e870105f0c829"
+content-hash = "ef8e4955e9ebeaae138c5cccea9bd679e078a43400bcf6b43729220289d7c034"
