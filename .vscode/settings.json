@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["covariates", "idata", "newaxis", "numpyro", "nunique"]
+  "cSpell.words": [
+    "covariates",
+    "dmatrix",
+    "idata",
+    "newaxis",
+    "numpyro",
+    "nunique"
+  ]
 }
