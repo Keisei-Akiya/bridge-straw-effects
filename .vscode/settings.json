@@ -5,6 +5,7 @@
     "idata",
     "newaxis",
     "numpyro",
-    "nunique"
+    "nunique",
+    "pandas"
   ]
 }
