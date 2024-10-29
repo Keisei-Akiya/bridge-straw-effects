@@ -1,8 +1,12 @@
 {
   "cSpell.words": [
     "covariates",
+    "dataframe",
     "dmatrix",
+    "GLMM",
+    "histplot",
     "idata",
+    "lineplot",
     "newaxis",
     "numpyro",
     "nunique",
