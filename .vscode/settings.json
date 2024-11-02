@@ -12,5 +12,8 @@
     "nunique",
     "pandas",
     "SUTVA"
-  ]
+  ],
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}"
+  }
 }
