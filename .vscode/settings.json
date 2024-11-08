@@ -7,11 +7,15 @@
     "histplot",
     "idata",
     "lineplot",
+    "marp",
+    "mathbf",
+    "mathjax",
     "newaxis",
     "numpyro",
     "nunique",
     "pandas",
-    "SUTVA"
+    "SUTVA",
+    "TWFE"
   ],
   "terminal.integrated.env.linux": {
     "PYTHONPATH": "${workspaceFolder}"
