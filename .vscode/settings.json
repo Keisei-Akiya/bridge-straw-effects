@@ -5,6 +5,7 @@
     "covariates",
     "dataframe",
     "dmatrix",
+    "errorbar",
     "GLMM",
     "histplot",
     "idata",
@@ -17,7 +18,8 @@
     "nunique",
     "pandas",
     "SUTVA",
-    "TWFE"
+    "TWFE",
+    "yerr"
   ],
   "terminal.integrated.env.linux": {
     "PYTHONPATH": "${workspaceFolder}"
