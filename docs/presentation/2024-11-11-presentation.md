@@ -456,7 +456,50 @@ $Pr(\delta < 0): 100 \%$
 <div class="flex sa">
 <div style="--fw: 3;">
 
+|          | $\text{Eq}1$ | $\text{Eq}2$ |
+| -------- | ------------ | ------------ |
+| 誤差項   | $69.01$      | $120.46$     |
+|          | $(2.50)$     | $(6.34)$     |
+| 対数尤度 | $-11710$     | $-13428$     |
+| 階層構造 | Yes          | No           |
+| 誤差分散 | $t$ 分布     | $t$ 分布     |
+
+</div>
+<div style="--fw: 2;">
+
+# 右の子要素
+
+同じくここは**右側**です！
+同じくここは**右側**です！
+
+</div>
+</div>
+
+介入効果は 136 年分あるので次．
+
+---
+
+## Dynamic TWFE (ベイズモデル)
+
+<div class="flex sa">
+<div style="--fw: 3;">
+
 ![dynamic twfe graph](./img/dynamic_twfe_graph.png)
+
+</div>
+<div style="--fw: 2;">
+
+</div>
+</div>
+
+---
+
+## Dynamic TWFE (階層ベイズモデル)
+
+<div class="flex sa">
+<div style="--fw: 3;">
+
+![dynamic twfe hierarchical](./img/dynamic_twfe_graph_hierarchical.png)
 
 </div>
 <div style="--fw: 2;">
