@@ -19,6 +19,7 @@
     "pandas",
     "SUTVA",
     "TWFE",
+    "WAIC",
     "yerr"
   ],
   "terminal.integrated.env.linux": {

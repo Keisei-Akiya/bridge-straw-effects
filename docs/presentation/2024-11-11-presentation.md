@@ -5,7 +5,7 @@ class:
   - lead
   - invert
 paginate: true
-math: mathjax
+math: TeX
 ---
 
 # 卒論: 離島架橋の介入効果
@@ -227,8 +227,8 @@ $$
 - 5.1 離島人口データの説明
 - 5.2 データの出典
 - 5.3 モデル
-- 5.4 外れ値
-- 5.5 欠損値
+- 5.4 欠損値
+- 5.5 外れ値
 
 ---
 
@@ -242,14 +242,20 @@ $$
 
 ## 5.3 モデル
 
-- 5.3.1 Two-way Fixed Effects (TWFE)
-- 5.3.2 Dynamic TWFE
-- 5.3.3 Fully-saturated TWFE
-- 5.3.4 ベイズ構造時系列
+- 5.3.1 分析に用いるフレームワークの紹介
+- 5.3.2 ベイズモデルへの拡張
 
 ---
 
-## 5.3.1 Two-way Fixed Effects (TWFE)
+## 5.3.1 分析に用いるフレームワークの紹介
+
+- Two-way Fixed Effects
+- Dynamic TWFE
+- Fully-saturated TWFE
+
+---
+
+## 5.3.1 分析に用いるフレームワークの紹介 TWFE
 
 $$
 Y_{it} = \alpha_i + \lambda_t + \delta T_{it} + \epsilon_{it}
@@ -257,7 +263,7 @@ $$
 
 - $\alpha_i$ : 個体効果
 - $\lambda_t$ : 時間効果
-- $\delta$ : 介入効果
+- $\delta$ : 介入効果パラメータ
 - $T_{it}$ : 介入変数 (介入前: $0$．介入後: $1$．)
 - $\epsilon_{it}$ : 誤差項
 
@@ -266,33 +272,33 @@ $$
 
 ---
 
-## 5.3.2 Dynamic TWFE
+## 5.3.1 分析に用いるフレームワークの紹介 Dynamic TWFE
 
 時系列的な異質性に対処．
 
 $$
-Y_{it} = \alpha_i + \lambda_t + \sum_{l \in L} \delta_l \mathbf{1}[t - k_i = l] + \epsilon_{it}
+Y_{it} = \alpha_i + \lambda_t + \sum_{\ell \in L} \delta_{\ell} \mathbf{1}[t - k_i = \ell] + \epsilon_{it}
 $$
 
 - $t$ : 観測年
 - $k_i$ : 個体 $i$ 毎の介入タイミング
-- $l$ : 介入タイミングに対する相対的な年数．
-  - 介入前: 負
+- $l$ : 介入タイミングに対する相対的な年数．正ならば介入の経過年数を表す．
+  - 介入前: 負．橋ができる $10$ 年前のデータは$-10$
   - 介入年: $0$
   - 介入後: 正
 
-横断的な異質性には対処していない．
+横断的な異質性には対処していない点で問題がある．
 
 ---
 
-## 5.3.3 Fully-saturated TWFE
+## 5.3.1 分析に用いるフレームワークの紹介 Fully-saturated TWFE
 
 Sun & Abraham (2021)
 
 横断的・時系列的な異質性に対処．
 
 $$
-Y_{it} = \alpha_i + \lambda_t + \sum_{k \notin C}\sum_{l \in L} \delta_{lk} \mathbf{1}[G_k=k]\mathbf{1}[t-k=l] + \epsilon_{it}
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \notin C}\sum_{\ell \in L} \delta_{\ell,k} \mathbf{1}[G_k=k]\mathbf{1}[t-k=\ell] + \epsilon_{it}
 $$
 
 - $k$ : 介入タイミング．
@@ -303,18 +309,188 @@ $$
 
 ---
 
-## 5.3.4 ベイズ構造時系列モデル
+## 5.3.2 ベイズモデルへの拡張
+
+1. Pooled model
+2. TWFE
+   島，年のランダム効果を追加
+3. Dynamic TWFE
+   介入効果パラメータに介入経過年数のばらつきを考慮
+4. Fully-saturated TWFE
+   介入効果パラメータに介入タイミングのばらつきを考
 
 ---
 
-## 5.4 外れ値
+## 5.3.2 ベイズモデルへの拡張 TWFE
 
-- 5.4.1 レバレッジ
-- 5.4.2 $t$ 分布によるロバスト推定
+頻度論
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \delta T_{it} + \epsilon_{it}
+$$
+
+ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + \delta T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2) \\
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\text{island}_i &\sim \mathcal{N}(0, 100^2) \\
+\text{year}_t &\sim \mathcal{N}(0, 100^2) \\
+\end{aligned}
+$$
 
 ---
 
-## 5.4.1 レバレッジ
+## 5.3.2 ベイズモデルへの拡張 TWFE
+
+階層ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + \delta T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2) \\
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\text{island}_i &\sim \mathcal{N}(\mu_{island}, \sigma_{island}^2) \\
+\text{year}_t &\sim \mathcal{N}(\mu_{year}, \sigma_{year}^2) \\
+\end{aligned}
+$$
+
+ハイパーパラメータ
+
+$$
+\begin{aligned}
+\mu_{hyper} &\sim \mathcal{N}(0, 100^2) \\
+\sigma_{hyper} &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2)
+\end{aligned}
+$$
+
+---
+
+## 5.3.2 ベイズモデルへの拡張 Dynamic TWFE
+
+頻度論
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \sum_{\ell \in L} \delta_{\ell} \mathbf{1}[t - k_i = \ell] + \epsilon_{it}
+$$
+
+ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{\ell}) T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\gamma_{\ell} &\sim \mathcal{N}(0, 100^2) \\
+\text{island}_i &\sim \mathcal{N}(0, 100^2) \\
+\text{year}_t &\sim \mathcal{N}(0, 100^2) \\
+\end{aligned}
+$$
+
+---
+
+## 5.3.2 ベイズモデルへの拡張 Dynamic TWFE
+
+階層ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{\ell}) T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2) \\
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\gamma_{\ell} &\sim \mathcal{N}(\mu_{\gamma}, \sigma_{\gamma}^2) \\
+\text{island}_i &\sim \mathcal{N}(\mu_{island}, \sigma_{island}^2) \\
+\text{year}_t &\sim \mathcal{N}(\mu_{year}, \sigma_{year}^2) \\
+\end{aligned}
+$$
+
+ハイパーパラメータ
+
+$$
+\begin{aligned}
+\mu_{hyper} &\sim \mathcal{N}(0, 100^2) \\
+\sigma_{hyper} &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2)
+\end{aligned}
+$$
+
+---
+
+## 5.3.2 ベイズモデル拡張 Fully-saturated TWFE
+
+頻度論
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \notin C}\sum_{\ell \in L} \delta_{\ell,k} \mathbf{1}[G_k=k]\mathbf{1}[t-k=\ell] + \epsilon_{it}
+$$
+
+ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{\ell} + \gamma_k) T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\gamma_{\ell} &\sim \mathcal{N}(0, 100^2) \\
+\gamma_k &\sim \mathcal{N}(0, 100^2) \\
+\text{island}_i &\sim \mathcal{N}(0, 100^2) \\
+\text{year}_t &\sim \mathcal{N}(0, 100^2) \\
+\end{aligned}
+$$
+
+---
+
+## 5.3.2 ベイズモデルの拡張 Fully-saturated TWFE
+
+階層ベイズモデル
+
+$$
+\begin{aligned}
+Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{\ell} + \gamma_{k}) T_{it} + \text{island}_i + \text{year}_t \\
+\sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
+\text{intercept} &\sim \mathcal{N}(0, 100^2) \\
+\delta &\sim \mathcal{N}(0, 100^2) \\
+\gamma_{\ell} &\sim \mathcal{N}(\mu_{\gamma_{\ell}}, \sigma_{\gamma_{\ell}}^2) \\
+\gamma_k &\sim \mathcal{N}(\mu_{\gamma_k}, \sigma_{\gamma_k}^2) \\
+\text{island}_i &\sim \mathcal{N}(\mu_{island}, \sigma_{island}^2) \\
+\text{year}_t &\sim \mathcal{N}(\mu_{year}, \sigma_{year}^2) \\
+\end{aligned}
+
+
+$$
+
+---
+
+## 5.4 欠損値
+
+人口データが手に入らないこともあるので，欠損値が 10%ほどある．
+
+PyMC が良い感じで補完してくれるので一旦はそれでやっている．
+
+勉強中につき，まだ謎だが，デフォルトで補完機能がついているので信頼している．
+
+---
+
+## 5.5 外れ値
+
+- 5.5.1 レバレッジ
+- 5.5.2 $t$ 分布によるロバスト推定
+
+---
+
+## 5.5.1 レバレッジ
 
 各観測値がモデルに与える影響度を評価できる．
 レバレッジスコアが高い観測値はモデルに対して強い影響を持つ．
@@ -337,7 +513,7 @@ $$
 
 ---
 
-## 5.4.1 レバレッジ
+## 5.5.1 レバレッジ
 
 <div class="flex sa">
 <div style="--fw: 3;">
@@ -363,7 +539,7 @@ $$
 
 ---
 
-## 5.4.2 $t$ 分布によるロバスト推定
+## 5.5.2 $t$ 分布によるロバスト推定
 
 <div class="flex sa">
 <div style="--fw: 3;">
@@ -376,15 +552,14 @@ $$
 誤差項に正規分布ではなく，
 正規分布より裾が重い
 自由度$3$の $t$ 分布を設定．
-外れ値にロバストな回帰を実行．
+外れ値にロバストな
+回帰を実行できる．
 (Gelman et al., 2013)
 
 </div>
 </div>
 
----
-
-## 5.5 欠損値
+(例の欠損値補完が変でもそれに耐えうる推定ができると期待している．)
 
 ---
 
@@ -401,12 +576,14 @@ $$
 
 |              | $\text{Eq}1$ | $\text{Eq}2$ | $\text{Eq}3$ | $\text{Eq}4$ |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
-| 介入効果     | $-179.61$    | $147.50$     | $44.00$      | $538.22$     |
-|              | $(22.86)$    | $(31.80)$    | $(80.43)$    | $(92.84)$    |
-| 誤差標準偏差 | $69.68$      | $141.83$     | $1034.10$    | $4987.31$    |
-|              | $(2.40)$     | $(15.11)$    | $(18.64)$    | $(88.64)$    |
-| WAIC         | $-11962$     | $-13683$     | $-14314$     | $-16871$     |
-|              | $(179.96)$   | $(178.11)$   | $(162.60)$   | $(144.00)$   |
+| 切片         | $53.82$      | $347.96$     | $44.00$      | $538.22$     |
+|              | $(97.15)$    | $(22.79)$    | $(80.43)$    | $(92.84)$    |
+| 介入効果     | $-178.77$    | $46.77$      | $44.00$      | $538.22$     |
+|              | $(22.47)$    | $(8.25)$     | $(80.43)$    | $(92.84)$    |
+| 誤差標準偏差 | $69.78$      | $118.95$     | $1034.10$    | $4987.31$    |
+|              | $(2.40)$     | $(6.08)$     | $(18.64)$    | $(88.64)$    |
+| WAIC         | $-11916$     | $-13374$     | $-14314$     | $-16871$     |
+|              | $(172.38)$   | $(183.69)$   | $(162.60)$   | $(144.00)$   |
 | 階層構造     | Yes          | No           | Yes          | No           |
 | 分布型       | $t$ 分布     | $t$ 分布     | 正規分布     | 正規分布     |
 
@@ -460,10 +637,14 @@ $Pr(\delta < 0): 100 \%$
 
 |              | $\text{Eq}5$ | $\text{Eq}6$ |
 | ------------ | ------------ | ------------ |
-| 誤差標準偏差 | $69.01$      | $120.46$     |
-|              | $(2.50)$     | $(6.34)$     |
-| WAIC         | $-11949$     | $-13428$     |
-|              | $(142.60)$   | $(183.97)$   |
+| 切片         | $$           | $326.83$     |
+|              | $()$         | $(24.96)$    |
+| 介入効果     | $$           | $129.89$     |
+|              | $()$         | $(27.41)$    |
+| 誤差標準偏差 | $69.01$      | $119.58$     |
+|              | $(2.50)$     | $(6.05)$     |
+| WAIC         | $-11949$     | $-13343$     |
+|              | $(142.60)$   | $(184.84)$   |
 | 階層構造     | Yes          | No           |
 
 括弧内は事後標準偏差又は標準誤差
