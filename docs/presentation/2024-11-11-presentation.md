@@ -30,25 +30,27 @@ math: TeX
 ## 1. はじめに
 
 - 1.1 離島の人口動向
-- 1.2 交通インフラの重要性に関する背景
-- 1.3 島の橋が人口に及ぼす影響を研究する動機
-- 1.4 リサーチクエスチョン
+- 1.2 島の橋が人口に及ぼす影響を研究する動機
+- 13 リサーチクエスチョン
 
 ---
 
 ## 1.1 離島の人口動向
 
----
-
-## 1.2 交通インフラの重要性に関する背景
+![population_change](./img/population_change.png)
 
 ---
 
-## 1.3 島の橋が人口に及ぼす影響を研究する動機
+## 1.2 島の橋が人口に及ぼす影響を研究する動機
+
+離島に橋を架けることで便利になるのはいいが，
+ストロー効果を引き起こす可能性があるという説もある(森田ら 2020)．
+
+実際どうなのか調べたい．
 
 ---
 
-## 1.4 リサーチクエスチョン
+## 1.3 リサーチクエスチョン
 
 ---
 
@@ -195,28 +197,78 @@ math: TeX
 ## 4.2 一般化線形混合モデル (GLMM)
 
 - 4.2.1 一般化線形モデル (GLM)
-- 4.2.2 線形混合モデル (LMM)
+- 4.2.2 混合モデル
 
 ---
 
 ## 4.2.1 一般化線形モデル (GLM)
 
-- 正規分布以外の確率分布を仮定する手法．
+正規分布以外の確率分布を仮定する手法．
+
+例
+
+- ベルヌーイ分布(ロジスティック回帰)
+- ポアソン分布
+- $t$ 分布
 
 ---
 
-## 4.2.2 線形混合モデル (LMM)
+## 4.2.2 混合モデル
+
+パラメータは個体やグループで固定されているという仮定から脱却し，
+
+以下の 2 つを考慮する手法．
 
 - ランダム切片
 - ランダム係数
+
+なお，固定効果とランダム効果という用語が登場するが，
+計量経済学のパネル分析の用語とは異なるので混乱注意．
+
+---
+
+## 4.2.2 混合モデル
+
+単回帰
+
+$$
+Y = \beta_0 + \beta_1 X + \epsilon
+$$
+
+混合モデル
+
+$$
+Y_{ij} = (\eta_0 + \gamma_{0j}) + (\eta_1 + \gamma_{1j}) X_{ij} + \epsilon_{ij}
+$$
+
+$\eta$: 固定効果
+$\gamma$: ランダム効果
+添字 $0$は切片，$1$は傾き，$i$は個体 $j$はグループ
+
+---
+
+![lmm_kyotofu_1](./img/lmm_kyotofu_1.png)
+
+https://www2.kpu.ac.jp/for_ecol/obenkyou/GLMMexample.pdf
+
+---
+
+![lmm_kyotofu_2](./img/lmm_kyotofu_2.png)
+
+https://www2.kpu.ac.jp/for_ecol/obenkyou/GLMMexample.pdf
+
+---
+
+![lmm_kyotofu_3](./img/lmm_kyotofu_3.png)
+
+https://www2.kpu.ac.jp/for_ecol/obenkyou/GLMMexample.pdf
 
 ---
 
 ## 4.3 階層ベイズモデル
 
-$$
-P(\theta|\text(Data)) \propto {P(\text(Data)|\theta)P(\theta)}
-$$
+ランダム効果パラメータがより上位のハイパーパラメータから生成される．
+階層モデルによってグループ間の情報が共有されることで，グループ毎にデータがアンバランスでも推定ができる(ピーター D ホフ. 標準ベイズ統計学)．
 
 ---
 
@@ -224,19 +276,39 @@ $$
 
 ## 5. データと分析手法
 
-- 5.1 離島人口データの説明
-- 5.2 データの出典
-- 5.3 モデル
-- 5.4 欠損値
-- 5.5 外れ値
+- 5.1 データの出典
+- 5.2 モデル
+- 5.3 欠損値
+- 5.4 外れ値
 
 ---
 
-## 5.1 離島人口データの説明
+## 5.1 データ
+
+- 5.1.1 データの出展
+- 5.1.2 分析対象
 
 ---
 
-## 5.2 データの出典
+## 5.1.1 データの出典
+
+- 人口
+  - 国勢調査
+  - 離島統計年報
+- 橋の有無
+  - Google Earth
+- 橋の建設年
+  - 色々な所から．
+
+---
+
+## 5.1.2 分析対象
+
+四国中国地方 (島根，岡山，広島，山口，徳島，香川，愛媛，高知)
+島数: 94
+期間: 1970 年から 2020 年(欠損あり)
+
+※遠すぎる島は除外(橋のギネス世界記録が明石海峡大橋$1991ｍ$)
 
 ---
 
@@ -430,7 +502,7 @@ $$
 頻度論
 
 $$
-Y_{it} = \alpha_i + \lambda_t + \sum_{k \notin C}\sum_{\ell \in L} \delta_{\ell,k} \mathbf{1}[G_k=k]\mathbf{1}[t-k=\ell] + \epsilon_{it}
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \notin C}\sum_{\ell \in L} \delta_{k,\ell} \mathbf{1}[G_k=k]\mathbf{1}[t-k=\ell] + \epsilon_{it}
 $$
 
 ベイズモデル
@@ -438,12 +510,11 @@ $$
 $$
 \begin{aligned}
 Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
-\mu &= \text{intercept} + (\delta + {\gamma}_{\ell} + \gamma_k) T_{it} + \text{island}_i + \text{year}_t \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{k,\ell}) T_{it} + \text{island}_i + \text{year}_t \\
 \sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
 \text{intercept} &\sim \mathcal{N}(0, 100^2
 \delta &\sim \mathcal{N}(0, 100^2) \\
-\gamma_{\ell} &\sim \mathcal{N}(0, 100^2) \\
-\gamma_k &\sim \mathcal{N}(0, 100^2) \\
+\gamma_{k,\ell} &\sim \mathcal{N}(0, 100^2) \\
 \text{island}_i &\sim \mathcal{N}(0, 100^2) \\
 \text{year}_t &\sim \mathcal{N}(0, 100^2) \\
 \end{aligned}
@@ -458,17 +529,23 @@ $$
 $$
 \begin{aligned}
 Y_{it} &\sim \mathcal{t} (\nu=3, \mu, \sigma^2) \\
-\mu &= \text{intercept} + (\delta + {\gamma}_{\ell} + \gamma_{k}) T_{it} + \text{island}_i + \text{year}_t \\
+\mu &= \text{intercept} + (\delta + {\gamma}_{k,\ell}) T_{it} + \text{island}_i + \text{year}_t \\
 \sigma &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2) \\
 \text{intercept} &\sim \mathcal{N}(0, 100^2) \\
 \delta &\sim \mathcal{N}(0, 100^2) \\
-\gamma_{\ell} &\sim \mathcal{N}(\mu_{\gamma_{\ell}}, \sigma_{\gamma_{\ell}}^2) \\
-\gamma_k &\sim \mathcal{N}(\mu_{\gamma_k}, \sigma_{\gamma_k}^2) \\
+\gamma_{k,\ell} &\sim \mathcal{N}(\mu_{\gamma_{k,\ell}}, \sigma_{\gamma_{k,\ell}}^2) \\
 \text{island}_i &\sim \mathcal{N}(\mu_{island}, \sigma_{island}^2) \\
 \text{year}_t &\sim \mathcal{N}(\mu_{year}, \sigma_{year}^2) \\
 \end{aligned}
+$$
 
+ハイパーパラメータ
 
+$$
+\begin{aligned}
+\mu_{hyper} &\sim \mathcal{N}(0, 100^2) \\
+\sigma_{hyper} &\sim \text{Half-}\mathcal{t}(\nu=3, 100^2)
+\end{aligned}
 $$
 
 ---
@@ -647,7 +724,8 @@ $Pr(\delta < 0): 100 \%$
 |              | $(188.72)$   | $(184.84)$   |
 | 階層構造     | Yes          | No           |
 
-括弧内は事後標準偏差又は標準誤差
+括弧内は事後標準偏差又は標準誤差．
+$t$ 分布
 
 </div>
 <div style="--fw: 2;">
@@ -724,13 +802,18 @@ $Pr(\delta < 0): 100 \%$
 
 |              | $\text{Eq}7$ | $\text{Eq}8$ |
 | ------------ | ------------ | ------------ |
-| 誤差標準偏差 | $$           | $130.53$     |
-|              | $()$         | $(7.38)$     |
-| WAIC         | $$           | $-13511$     |
-|              | $()$         | $(180.11)$   |
+| 切片         | $59.82$      | $341.21$     |
+|              | $(94.08)$    | $(23.92)$    |
+| 介入効果     | $-311.63$    | $97.29$      |
+|              | $(47.58)$    | $(25.81)$    |
+| 誤差標準偏差 | $46.03$      | $130.77$     |
+|              | $(1.92)$     | $(7.52)$     |
+| WAIC         | $-11751$     | $-13433$     |
+|              | $(221.88)$   | $(177.39)$   |
 | 階層構造     | Yes          | No           |
 
 括弧内は事後標準偏差又は標準誤差
+$t$ 分布
 
 </div>
 <div style="--fw: 2;">
@@ -745,7 +828,7 @@ $Pr(\delta < 0): 100 \%$
 
 # 下側のゾーン
 
-ここはレイアウトで**下側**に位置します！フッターやまとめの文を挿入できます。
+**ここはレイアウトで\*\***下側\*\*に位置します！フッターやまとめの文を挿入できます。
 
 ---
 
@@ -756,6 +839,10 @@ $Pr(\delta < 0): 100 \%$
 ---
 
 ## 参考文献
+
+森田, 猪原, 中村. (2020). "空間経済学に基づくストロー効果の発生条件とその影響 --明石海峡大橋を事例として". 日本経済研究.
+
+ピーター D ホフ. (2022). "標準ベイズ統計". 朝倉書店.
 
 DC Hoaglin, RE Welsch. (1978). "The hat matrix in regression and ANOVA." The American Statistician. Taylor & Francis.
 
