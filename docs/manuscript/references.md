@@ -88,14 +88,26 @@ Kim, A. (2020, August 28). _How I Became a Full-Time Freelance Editor (and How Y
 
 ---
 
+尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
+
+高知県. (2013). _Untitled_. アクセス日: 2024 年 12 月 14 日, https://www.pref.kochi.lg.jp/doc/syuurakutyousa-kako/file_contents/2013100300213_www_pref_kochi_lg_jp_uploaded_attachment_103308.pdf
+
+下関市. (2016). _下関市地区別人口ビジョン 第 3 章 彦島地区の個別分析._. 下関市. アクセス日: 2024 年 12 月 14 日, https://www.city.shimonoseki.lg.jp/uploaded/attachment/1123.pdf
+
 下松市. (1989). _下松市史 通史編 人口の推移(テキスト) 第四編 近代の下松 第四章 日清日露戦争後の社会と生活 2 人口と災害六五九 (1) 人口の推移と死因_. 松市／郷土資料・文化遺産デジタルアーカイブ. アクセス日: 2024 年 12 月 14 日, https://adeac.jp/kudamatsu-city/text-list/d100010/ht040990
 
 下松市. (1989). _下松市史 通史編 人口の推移(テキスト) 第五篇 現代の下松 第一章 行政・財政 8 理想都市の建設_. 松市／郷土資料・文化遺産デジタルアーカイブ. アクセス日: 2024 年 12 月 14 日, https://adeac.jp/kudamatsu-city/text-list/d100010/ht050380
 
-尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
-
 周防大島町. (2021). _第 2 期 周防大島町人口ビジョン_. 周防大島町公式ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.town.suo-oshima.lg.jp/uploaded/attachment/6470.pdf
 
-下関市. (2016). _下関市地区別人口ビジョン 第 3 章 彦島地区の個別分析._. 下関市. アクセス日: 2024 年 12 月 14 日, https://www.city.shimonoseki.lg.jp/uploaded/attachment/1123.pdf
+総務省統計局. (1995). _平成 7 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/1995/index.html
 
-高知県. (2013). _Untitled_. アクセス日: 2024 年 12 月 14 日, https://www.pref.kochi.lg.jp/doc/syuurakutyousa-kako/file_contents/2013100300213_www_pref_kochi_lg_jp_uploaded_attachment_103308.pdf
+総務省統計局. (2000). _平成 12 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/2000/index.html
+
+総務省統計局. (2005). _平成 17 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/2005/index.html
+
+総務省統計局. (2010). _平成 22 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/2010/index.html
+
+総務省統計局. (2015). _平成 27 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/2015/index.html
+
+総務省統計局. (2020). _令和 2 年国勢調査_. 総務省統計局. アクセス日: 2024 年 12 月 14 日, https://www.stat.go.jp/data/kokusei/2020/index.html
