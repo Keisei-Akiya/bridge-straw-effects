@@ -21,6 +21,7 @@
     "initvals",
     "ipykernel",
     "ipywidgets",
+    "isin",
     "jaxlib",
     "lineplot",
     "linestyle",
