@@ -11,6 +11,7 @@
     "dmatrix",
     "DTWFE",
     "Dunson",
+    "elpd",
     "errorbar",
     "FSTWFE",
     "Gelman",
@@ -47,6 +48,7 @@
     "Vehtari",
     "WAIC",
     "Welsch",
+    "xlim",
     "yerr"
   ],
   "terminal.integrated.env.linux": {
