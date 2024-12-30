@@ -30,7 +30,7 @@ outliers
 
 ## 外れ値除去前
 
-![alt text](image.png)
+![alt text](../figures/twfe_glmm_laplace.png)
 
 ## 外れ値除去後
 

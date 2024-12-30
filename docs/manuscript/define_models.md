@@ -27,6 +27,8 @@ $$
 \end{aligned}
 $$
 
+![twfe glmm laplace](../figures/twfe_glmm_laplace.png)
+
 ## Dynamic TWFE
 
 classic
