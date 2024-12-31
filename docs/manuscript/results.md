@@ -1,21 +1,103 @@
 # 推定結果
 
-## Two-way fixed effect
+- [推定結果](#推定結果)
+  - [個体・時間ランダム効果](#個体時間ランダム効果)
+  - [Two-way fixed effect](#two-way-fixed-effect)
+    - [階層ベイズモデル 不均一分散](#階層ベイズモデル-不均一分散)
+    - [GLMM 不均一分散](#glmm-不均一分散)
+    - [GLMM 均一分散](#glmm-均一分散)
+    - [階層ベイズモデル 不均一分散 ランダム効果](#階層ベイズモデル-不均一分散-ランダム効果)
+  - [Dynamic Two-way fixed effect](#dynamic-two-way-fixed-effect)
+    - [階層ベイズモデル 不均一分散](#階層ベイズモデル-不均一分散-1)
+    - [GLMM](#glmm)
+  - [Fully Saturated TWFE](#fully-saturated-twfe)
 
-### ベイズモデル
+## 個体・時間ランダム効果
 
 $$
 \begin{aligned}
 \log{Y_{it}^*} &= \log{Y_{it}} - \bar{\log{Y}_i} \\
-\log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma^2) \\
+\log{Y_{it}^{**}} &= \log{Y_{it}^*} - \bar{\log{Y}^*_t} \\
+\end{aligned}
+$$
+
+- $\log{Y_{it}}$: 観測値
+- $\bar{\log{Y}_i}$: 個体 $i$ の平均値
+- $\log{Y_{it}^*}$: 個体固定効果を除いた値
+- $\bar{\log{Y}^*_t}$: 個体固定効果を除いた値の時間 $t$ の平均値
+- $\log{Y_{it}^{**}}$: 個体と時間の固定効果を除いた値
+
+## Two-way fixed effect
+
+### 階層ベイズモデル 不均一分散
+
+$$
+\begin{aligned}
+\log{Y_{it}^{**}} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
+\nu &\sim \text{Exponential}(1/10) \\
 \mu_{it} &= \beta \cdot W_{it}\\
 \beta &\sim \mathcal{N}(0, 1) \\
+\sigma_i &\sim \mathcal{C}^+(\sigma_0^2) \\
+\end{aligned}
+$$
+
+- $\sigma^2_0$: 島間の誤差分散を表すハイパーパラメータ
+
+|   params   |   EAP   |   SD    |      95% HDI      | $\hat{R}$ |
+| :--------: | :-----: | :-----: | :---------------: | :-------: |
+|  $\beta$   | $0.029$ | $0.009$ | $[0.012, 0.046]$  |   $1.0$   |
+|   $\nu$    | $7.499$ | $1.545$ | $[4.853, 10.608]$ |   $1.0$   |
+| $\sigma_0$ | $0.175$ | $0.023$ | $[0.131, 0.218]$  |   $1.0$   |
+
+|           | Estimate | SE  |
+| :-------: | :------: | :-: |
+| elpd_waic |    $$    | $$  |
+|  p_waic   |    $$    |  -  |
+
+### GLMM 不均一分散
+
+$$
+\begin{aligned}
+\log{Y_{it}^{**}} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
 \nu &\sim \text{Exponential}(1/10) \\
+\mu_{it} &= \beta \cdot W_{it}\\
+\beta &\sim \mathcal{N}(0, 1) \\
+\sigma_i &\sim \mathcal{C}^+(1) \\
+\end{aligned}
+$$
+
+- $\sigma_i^2$: 島別の誤差分散
+
+|  param  |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
+| :-----: | :------: | :-----: | :---------------: | :-------: |
+| $\beta$ | $0.028$  | $0.009$ | $[0.009, 0.045]$  |   $1.0$   |
+|  $\nu$  | $10.619$ | $3.096$ | $[6.191, 16.466]$ |   $1.0$   |
+
+$\beta$: 100%の確率で 0 より大きい
+
+|           | Estimate |   SE    |
+| :-------: | :------: | :-----: |
+| elpd_waic | $471.15$ | $42.32$ |
+|  p_waic   | $83.64$  |    -    |
+
+### GLMM 均一分散
+
+$$
+\begin{aligned}
+\log{Y_{it}^{**}} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma^2) \\
+\nu &\sim \text{Exponential}(1/10) \\
+\mu_{it} &= \beta \cdot W_{it}\\
+\beta &\sim \mathcal{N}(0, 1) \\
 \sigma &\sim \mathcal{C}^+(1) \\
 \end{aligned}
 $$
 
-※ 固定効果を除いているため，定数項は必要ない．また，定数項は入れても 0 だった．
+- $\beta$: 介入効果
+- $W_{it}$: 介入変数
+- $\nu$: t 分布の自由度
+- $\sigma^2$: 誤差分散
+
+※ 個体と時間の効果を除いているため，定数項は必要ない．なお，定数項を入れて推定したが 0 だった．
 
 |  param   |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
 | :------: | :------: | :-----: | :---------------: | :-------: |
@@ -32,152 +114,140 @@ $\beta$: 負の効果である確率は 75.0%
 
 ※ elpd_waic は予測精度を示す指標で，大きいほど良い．p_waic はモデルの複雑さを示す指標で，小さいほどシンプルで良い．
 
-### 不均一分散
+### 階層ベイズモデル 不均一分散 ランダム効果
+
+※ いらない．なぜなら後で Fully saturated twfe で推定するから．
 
 $$
 \begin{aligned}
-\log{Y_{it}^*} &= \log{Y_{it}} - \bar{\log{Y}_i} \\
 \log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
-\mu_{it} &= (\beta + \beta_i) \cdot W_{it}\\
-\beta &\sim \mathcal{N}(0, 1) \\
 \nu &\sim \text{Exponential}(1/10) \\
-\sigma_i &\sim \mathcal{C}^+(1) \\
+\mu_{it} &= \beta_i \cdot W_{it}\\
+\beta_i &\sim \mathcal{N}(\mu_{\beta}, \sigma_{\beta}^2) \\
+\sigma_i &\sim \mathcal{C}^+(\sigma_0^2) \\
 \end{aligned}
 $$
 
-- $\sigma_i$: 島別の誤差標準偏差
+- $\beta_i$: 個体 $i$ の介入効果
+- $\mu_{\beta}$: 個体間の期待値を表すハイパーパラメータ
+- $\sigma_{\beta}^2$: 個体間の分散を表すハイパーパラメータ
+- $\sigma_0^2$: 個体間の誤差分散を表すハイパーパラメータ
+- $\sigma_i^2$: 個体間の誤差分散
 
-|  param  |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
-| :-----: | :------: | :-----: | :---------------: | :-------: |
-| $\beta$ | $0.028$  | $0.009$ | $[0.009, 0.045]$  |   $1.0$   |
-|  $\nu$  | $10.619$ | $3.096$ | $[6.191, 16.466]$ |   $1.0$   |
+|      params      |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
+| :--------------: | :------: | :-----: | :---------------: | :-------: |
+|  $\mu_{\beta}$   | $-0.019$ | $0.022$ | $[-0.064, 0.024]$ |   $1.0$   |
+| $\sigma_{\beta}$ | $0.139$  | $0.018$ | $[0.106, 0.174]$  |   $1.0$   |
+|    $\sigma_0$    | $0.140$  | $0.018$ | $[0.106, 0.175]$  |   $1.0$   |
+|      $\nu$       | $4.877$  | $0.689$ | $[3.691, 6.313]$  |   $1.0$   |
 
-$\beta$: 100%の確率で 0 より大きい
+※ draws=1500, warmup=1500, chains=4
 
-|           | Estimate |   SE    |
-| :-------: | :------: | :-----: |
-| elpd_waic | $471.15$ | $42.32$ |
-|  p_waic   | $83.64$  |    -    |
-
-### 不均一分散とランダム効果
-
-$$
-\begin{aligned}
-\log{Y_{it}^*} &= \log{Y_{it}} - \bar{\log{Y}_i} \\
-\log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
-\mu_{it} &= (\beta + \beta_i) \cdot W_{it}\\
-\beta &\sim \mathcal{N}(0, 1) \\
-\beta_i &\sim \mathcal{N}(0, 1) \\
-\nu &\sim \text{Exponential}(1/10) \\
-\sigma_i &\sim \mathcal{C}^+(1) \\
-\end{aligned}
-$$
-
-|  param  |   EAP   |   SD    |      95% HDI      | $\hat{R}$ |
-| :-----: | :-----: | :-----: | :---------------: | :-------: |
-| $\beta$ | $0.010$ | $0.139$ | $[-0.267, 0.268]$ |  $1.01$   |
-|  $\nu$  | $6.565$ | $1.240$ | $[4.397, 8.964]$  |   $1.0$   |
-
-|           | Estimate |   SE    |
-| :-------: | :------: | :-----: |
-| elpd_waic | $593.51$ | $44.64$ |
-|  p_waic   | $127.31$ |    -    |
-
-![twfe 3 trace plot](../figures/twfe/twfe_3_trace_plot.png)
-
-![twfe_3 beta](../figures/twfe/twfe_3_beta.png)
-
-![twfe 3 beta i](../figures/twfe/twfe_3_beta_i.png)
-
-![twfe 3 sigma i](../figures/twfe/twfe_3_sigma_i.png)
-
-<!-- 階層ベイズモデル -->
-
-<!-- |    params     |   EAP    |   SD    |      95% HDI       | $\hat{R}$ |
-| :-----------: | :------: | :-----: | :----------------: | :-------: |
-|   $\alpha$    | $0.026$  | $0.992$ | $[-1.884, 1.904]$  |  $1.00$   |
-|    $\beta$    | $-0.065$ | $0.020$ | $[-0.102, -0.027]$ |  $1.00$   |
-|  $\mu_\eta$   | $-0.059$ | $0.992$ | $[-1.930, 1.860]$  |  $1.00$   |
-| $\sigma_\eta$ | $0.044$  | $0.035$ |  $[0.000, 0.111]$  |  $1.02$   |
-|   $\sigma$    | $0.302$  | $0.014$ |  $[0.275, 0.328]$  |  $1.01$   |
-|     $\nu$     | $3.363$  | $0.348$ |  $[2.748, 4.113]$  |  $1.00$   | -->
+![twfe hie trace plot](../figures/twfe/twfe_hie_trace_plot.png)
 
 ## Dynamic Two-way fixed effect
 
-GLMM
+### 階層ベイズモデル 不均一分散
 
-定数項なし
+介入の経過時間と不均一分散を考慮したモデル
 
 $$
 \begin{aligned}
-\log{Y}^*_{it} &= \log{Y_{it}} - \bar{\log{Y}}_i - \bar{\log{Y}}_t \\
+\log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
+\nu &\sim \text{Exponential}(1/10) \\
+\mu_{it} &= \beta_{l} \cdot T_{i} \\
+\beta_{l} &\sim \mathcal{N}(\mu_{\beta}, \sigma_{\beta}^2) \\
+\sigma_i &\sim \mathcal{C}^+(\sigma_0^2) \\
+\end{aligned}
+$$
+
+- $\beta_l$: 経過年数毎に変動する介入効果
+- $T_{it}$: 介入群ダミー
+- $\mu_{\beta}$: 経過年数間の期待値を表すハイパーパラメータ
+- $\sigma_{\beta}^2$: 経過年数間の分散を表すハイパーパラメータ
+- $\sigma_0^2$: 島間の誤差分散を表すハイパーパラメータ
+
+|      params      |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
+| :--------------: | :------: | :-----: | :---------------: | :-------: |
+|  $\mu_{\beta}$   | $-0.012$ | $0.009$ | $[-0.030, 0.005]$ |   $1.0$   |
+| $\sigma_{\beta}$ | $0.023$  | $0.014$ | $[0.000, 0.048]$  |   $1.0$   |
+|    $\sigma_0$    | $0.176$  | $0.022$ | $[0.135, 0.219]$  |   $1.0$   |
+|      $\nu$       | $7.937$  | $1.722$ | $[5.045, 11.341]$ |   $1.0$   |
+
+|           | Estimate |   SE    |
+| :-------: | :------: | :-----: |
+| elpd_waic | $473.60$ | $42.61$ |
+|  p_waic   | $103.26$ |    -    |
+
+![介入効果の時間変化 (不均一分散)](../figures/dynamic_twfe/att_over_time_hierarchical_heteroskedasticity.png)
+
+均一分散を仮定したモデル
+
+$$
+\begin{aligned}
 \log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma^2) \\
-\mu_{it} &= (\beta + r_{\beta}) \cdot W_{it} \\
-\beta &\sim \mathcal{N}(0, 1) \\
-r_{\beta} &\sim \mathcal{N}(0, 1) \\
-\nu &\sim \text{Exponential}(1/5) \\
+\nu &\sim \text{Exponential}(1/10) \\
+\mu_{it} &= \beta_{l} \cdot T_{i} \\
+\beta_{l} &\sim \mathcal{N}(\mu_{\beta}, \sigma_{\beta}^2) \\
 \sigma &\sim \mathcal{C}^+(1) \\
 \end{aligned}
 $$
 
-ベイズモデル
+- $\beta_l$: 経過年数毎に変動する介入効果
+- $T_{it}$: 介入群ダミー
+- $\mu_{\beta}$: 経過年数間の期待値を表すハイパーパラメータ
+- $\sigma_{\beta}^2$: 経過年数間の標準偏差を表すハイパーパラメータ
 
-|  param   |   EAP    |   SD    |      95% HDI      | $\hat{R}$ |
-| :------: | :------: | :-----: | :---------------: | :-------: |
-| $\beta$  | $-0.023$ | $0.095$ | $[-0.208, 0.168]$ |  $1.01$   |
-| $\sigma$ | $0.144$  | $0.005$ | $[0.134, 0.154]$  |   $1.0$   |
-|  $\nu$   | $2.829$  | $0.236$ | $[2.375, 3.286]$  |   $1.0$   |
+|      params      |   EAP    |   SD    |      95% HDI       | $\hat{R}$ |
+| :--------------: | :------: | :-----: | :----------------: | :-------: |
+|  $\mu_{\beta}$   | $-0.035$ | $0.009$ | $[-0.052, -0.019]$ |   $1.0$   |
+| $\sigma_{\beta}$ | $0.035$  | $0.015$ |  $[0.003, 0.061]$  |   $1.0$   |
+|     $\sigma$     | $0.146$  | $0.005$ |  $[0.137, 0.156]$  |   $1.0$   |
+|      $\nu$       | $2.879$  | $0.235$ |  $[2.432, 3.335]$  |   $1.0$   |
 
 |           | Estimate |   SE    |
 | :-------: | :------: | :-----: |
-| elpd_waic | $165.54$ | $44.13$ |
-|  p_waic   | $127.08$ |    -    |
+| elpd_waic | $214.96$ | $44.65$ |
+|  p_waic   | $26.37$  |    -    |
 
-$\beta$: 39.9%の確率で 0 より大きい
+![介入効果の時間変化 (均一分散)](../figures/dynamic_twfe/att_over_time_hierarchical_homogeneous_variance.png)
 
-![posterior dist of beta dynamic_twfe](../figures/dynamic_twfe_beta.png)
+### GLMM
 
-![dynamic twfe](dynamic_twfe.png)
+|  param   |   EAP   |   SD    |     95% HDI      | $\hat{R}$ |
+| :------: | :-----: | :-----: | :--------------: | :-------: |
+| $\sigma$ | $0.144$ | $0.005$ | $[0.135, 0.154]$ |   $1.0$   |
+|  $\nu$   | $2.834$ | $0.224$ | $[2.392, 3.259]$ |   $1.0$   |
 
-## Dynamic Two-way fixed effect Bayesian Lasso
+|           | Estimate |   SE    |
+| :-------: | :------: | :-----: |
+| elpd_waic | $165.43$ | $44.22$ |
+|  p_waic   | $126.45$ |    -    |
 
-$$
-\begin{aligned}
-\log{Y}^*_{it} &= \log{Y_{it}} - \bar{\log{Y}}_i - \bar{\log{Y}}_t \\
-\log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma^2) \\
-\mu_{it} &= (\beta + r_{\ell}) * W_{it} \\
-\beta &\sim \mathcal{N}(0, 100) \\
-\rho_{\ell} &\sim \mathcal{Gamma}(1, 1) \\
-r_{\ell} &\sim \mathcal{Laplace}(0, 1/\rho_{\ell}^2) \\
-\nu &\sim \mathcal{Exponential}(1/30) \\
-\sigma &\sim \mathcal{Cauchy}^+(100) \\
-\end{aligned}
-$$
+![介入効果の時間変化 (GLMM 均一分散)](../figures/dynamic_twfe/att_over_time_glmm_homogeneous_variance.png)
 
-|   param   |   EAP    |   SD    |     95% HDI      | $\hat{R}$ |
-| :-------: | :------: | :-----: | :--------------: | :-------: |
-|  $\beta$  | $-0.033$ | $0.019$ | $[-0.07, 0.003]$ |   $1.0$   |
-|  $\rho$   |    $$    |   $$    |      $[, ]$      |   $1.0$   |
-| $\sigma$  | $0.144$  | $0.005$ |      $[, ]$      |   $1.0$   |
-|   $\nu$   | $2.871$  | $0.241$ |      $[, ]$      |   $1.0$   |
-| elpd_waic |    $$    |   $$    |      $[, ]$      |   $1.0$   |
-|  p_waic   |    $$    |   $$    |      $[, ]$      |   $1.0$   |
-
-## Staggered Difference-in-Difference
+## Fully Saturated TWFE
 
 $$
 \begin{aligned}
-\log{Y}^*_{it} &= \log{Y_{it}} - \bar{\log{Y}}_i - \bar{\log{Y}}_t \\
-\log{Y_{it}^*} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma^2) \\
-\mu_{it} &= \beta \cdot W_{it} \\
-\beta &\sim \mathcal{N}(0, 100) \\
-\nu &\sim \text{Exponential}(1/30) \\
-\sigma &\sim \mathcal{C}^+(100) \\
+\log{Y^{**}_{it}} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
+\nu &\sim \text{Exponential}(1/10) \\
+\mu_{it} &= \beta_{gl} \cdot T_{i} \\
+\beta_{gl} &\sim \mathcal{N}(\mu_{\beta}, \sigma_{\beta}^2) \\
+\sigma_i &\sim \mathcal{C}^+(\sigma_0^2) \\
 \end{aligned}
 $$
 
-|  param   | EAP |  SD | 95% HDI | $\hat{R}$ |
-| :------: | :-: | --: | :-----: | :-------: |
-| $\beta$  | $$  |  $$ | $[, ]$  |    $$     |
-| $\sigma$ | $$  |  $$ | $[, ]$  |    $$     |
-|  $\nu$   | $$  |  $$ | $[, ]$  |    $$     |
+- $\beta_{gl}$: 介入時期 $g$ と介入経過時間 $l$ によって変動する介入効果
+- $T_{it}$: 介入群ダミー
+- $\mu_{\beta}$: 介入時期と介入経過時間の期待値を表すハイパーパラメータ
+- $\sigma_{\beta}^2$: 介入時期と介入経過時間の分散を表すハイパーパラメータ
+- $\sigma_0^2$: 島間の誤差分散を表すハイパーパラメータ
+- $\sigma_i^2$: 島間の誤差分散
+
+|      param       | EAP |  SD | 95% HDI | $\hat{R}$ |
+| :--------------: | :-: | --: | :-----: | :-------: |
+|  $\mu_{\beta}$   | $$  |  $$ | $[, ]$  |    $$     |
+| $\sigma_{\beta}$ | $$  |  $$ | $[, ]$  |    $$     |
+|      $\nu$       | $$  |  $$ | $[, ]$  |    $$     |
+|    $\sigma_0$    | $$  |  $$ | $[, ]$  |    $$     |
