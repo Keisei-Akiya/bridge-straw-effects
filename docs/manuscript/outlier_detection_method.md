@@ -34,7 +34,7 @@ outliers
 
 ## 外れ値除去後
 
-![alt text](image-1.png)
+![alt text](../figures/histgram_log_pop_star.png)
 
 ## 除かれたデータ
 
