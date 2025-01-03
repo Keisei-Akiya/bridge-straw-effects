@@ -88,6 +88,8 @@ Kim, A. (2020, August 28). _How I Became a Full-Time Freelance Editor (and How Y
 
 ---
 
+Aki Vehtari. (2024). _Prior Choice Recommendations_. Github. アクセス日: 2024 年 1 月 3 日. https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations
+
 尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
 
 高知県. (2013). _Untitled_. アクセス日: 2024 年 12 月 14 日, https://www.pref.kochi.lg.jp/doc/syuurakutyousa-kako/file_contents/2013100300213_www_pref_kochi_lg_jp_uploaded_attachment_103308.pdf
