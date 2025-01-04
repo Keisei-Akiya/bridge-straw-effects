@@ -12,7 +12,11 @@ Tshitoyan, V., Dagdelen, J., Weston, L., Dunn, A., Rong, Z., Kononova, O., Perss
 
 ---
 
-Miguel A. Juárez, Mark F.J. Steel. (2010). Model-based clustering of non-Gaussian panel data. Journal of Business & Economic Statistics, 28, 52-66.
+Miguel A. Juárez, Mark F.J. Steel. (2010). _Model-based clustering of non-Gaussian panel data_. Journal of Business & Economic Statistics, 28, 52-66.
+
+重松純平. (2022). _離島の人口変化とその要因分析_. 2021 年度 中央大学大学院理工学研究科都市人間環境学専攻修士論文発表会要旨集. アクセス日: 2025 年 1 月 4 日. https://chuo-u.repo.nii.ac.jp/record/16478/files/nenpou20N3100018F.pdf
+
+湯本能章, 十代田朗, 津々見崇. (2002). 離島の類型と人口増減要因に関する基礎的分析. 都市計画論文集, 37, 793-798. アクセス日: 2025 年 1 月 4 日. https://www.jstage.jst.go.jp/article/journalcpij/37/0/37_793/_article/-char/ja/
 
 ＜ 書籍 ＞
 
@@ -95,6 +99,8 @@ Aki Vehtari. (2024). _Prior Choice Recommendations_. Github. アクセス日: 20
 尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
 
 高知県. (2013). _Untitled_. アクセス日: 2024 年 12 月 14 日, https://www.pref.kochi.lg.jp/doc/syuurakutyousa-kako/file_contents/2013100300213_www_pref_kochi_lg_jp_uploaded_attachment_103308.pdf
+
+国土交通省 国土政策局 離島振興課. (2022). _離島の現状と取り組み事例について_. 国土交通省. アクセス日: 2025 年 1 月 4 日. https://www.mlit.go.jp/policy/shingikai/content/001478618.pdf
 
 下関市. (2016). _下関市地区別人口ビジョン 第 3 章 彦島地区の個別分析._. 下関市. アクセス日: 2024 年 12 月 14 日, https://www.city.shimonoseki.lg.jp/uploaded/attachment/1123.pdf
 
