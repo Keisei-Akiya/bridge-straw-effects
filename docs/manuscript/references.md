@@ -12,6 +12,8 @@ Tshitoyan, V., Dagdelen, J., Weston, L., Dunn, A., Rong, Z., Kononova, O., Perss
 
 ---
 
+Miguel A. Juárez, Mark F.J. Steel. (2010). Model-based clustering of non-Gaussian panel data. Journal of Business & Economic Statistics, 28, 52-66.
+
 ＜ 書籍 ＞
 
 ---
