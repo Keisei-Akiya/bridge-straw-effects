@@ -27,7 +27,8 @@ $$
 \begin{aligned}
 \log{Y_{it}^{**}} &\sim \mathcal{t} (\nu, \mu_{it}, \sigma_i^2) \\
 \nu &\sim \text{Gamma}(2, 0.1) \\
-\mu_{it} &= \beta \cdot W_{it}\\
+\mu_{it} &= \alpha + \beta \cdot W_{it}\\
+\alpha &\sim \mathcal{N}(0, 0.1^2) \\
 \beta &\sim \mathcal{N}(0, 0.1^2) \\
 \sigma_i &\sim \mathcal{C}^+(\sigma_{\text{global}}^2) \\
 \end{aligned}
