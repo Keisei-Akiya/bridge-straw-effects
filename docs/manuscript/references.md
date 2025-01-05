@@ -18,6 +18,8 @@ Miguel A. Juárez, Mark F.J. Steel. (2010). _Model-based clustering of non-Gauss
 
 重松純平. (2022). _離島の人口変化とその要因分析_. 2021 年度 中央大学大学院理工学研究科都市人間環境学専攻修士論文発表会要旨集. アクセス日: 2025 年 1 月 4 日. https://chuo-u.repo.nii.ac.jp/record/16478/files/nenpou20N3100018F.pdf
 
+寺井しおり, 荻原正三. (1998). _本四架橋を景気とした島嶼整備のあり方に関する研究 芸予諸島における観光的側面から_. 都市計画論文集, 33, 127-132. アクセス日: 2025 年 1 月 5 日. https://www.jstage.jst.go.jp/article/journalcpij/33/0/33_127/_article/-char/ja/
+
 山崎義人, 橋本大, 重村力, 山崎寿一, 杉野香織, 上野浩一. (2007). _人口増加を続けてきた居住システムの考察_. 日本建築学会計画系論文集, 72, 612, 57-62. アクセス日: 2025 年 1 月 5 日. https://www.jstage.jst.go.jp/article/aija/72/612/72_KJ00004494898/_article/-char/ja/
 
 湯本能章, 十代田朗, 津々見崇. (2002). 離島の類型と人口増減要因に関する基礎的分析. 都市計画論文集, 37, 793-798. アクセス日: 2025 年 1 月 4 日. https://www.jstage.jst.go.jp/article/journalcpij/37/0/37_793/_article/-char/ja/
