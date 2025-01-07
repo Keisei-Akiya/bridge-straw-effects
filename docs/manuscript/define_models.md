@@ -227,3 +227,14 @@ $$
 平行トレンドの仮定は
 
 プラセボテストを行う．今回は $1970$ 年から $2000$ 年の介入前のデータを用いて架空の介入を設定し，その効果を検証する．もし介入効果が有意ならば
+
+## WAIC
+
+$$
+\text{WAIC} = -2 \left( \sum_{i=1}^{n} \log \left( \frac{1}{S} \sum_{s=1}^{S} p(y_i | \theta^s) \right) - \sum_{i=1}^{n} \text{Var}_{s=1}^{S} (\log p(y_i | \theta^s)) \right)
+$$
+
+- $n$ : データポイントの数
+- $S$ : サンプルの数
+- $p(y*i | \theta^s)$ : サンプル $\theta^s$ における観測 $y_i$ の尤度
+- $\text{Var}_{s=1}^{S} (\log p(y_i | \theta^s))$ : 尤度の対数の分散
