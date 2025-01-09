@@ -99,3 +99,57 @@ $1970$ には一度上昇し $0.156$ の効果を持つが，その後は一貫�
 | 2011 |       右肩上がり       |   +    |   +    | +          |
 | 2016 |       右肩上がり       |   +    |   +    | +          |
 | 2018 |       右肩上がり       |   +    |   +    | +          |
+
+### 介入前から正
+
+![1988](../figures//fully_saturated_twfe/1988.png)
+
+![1989](../figures//fully_saturated_twfe/1989.png)
+
+![1996](../figures//fully_saturated_twfe/1996.png)
+
+![2000](../figures//fully_saturated_twfe/2000.png)
+
+![2004](../figures//fully_saturated_twfe/2004.png)
+
+![2011](../figures//fully_saturated_twfe/2011.png)
+
+![2016](../figures//fully_saturated_twfe/2016.png)
+
+![2018](../figures//fully_saturated_twfe/2018.png)
+
+### 介入前は負，介入後は 0 以上
+
+![1973](../figures//fully_saturated_twfe/1973.png)
+
+![1976](../figures//fully_saturated_twfe/1976.png)
+
+![1979](../figures//fully_saturated_twfe/1979.png)
+
+![1972](../figures//fully_saturated_twfe/1972.png)
+
+![1982](../figures//fully_saturated_twfe/1982.png)
+
+![1983](../figures//fully_saturated_twfe/1983.png)
+
+![1991](../figures//fully_saturated_twfe/1991.png)
+
+### ストロー効果
+
+![1987](../figures//fully_saturated_twfe/1987.png)
+
+![1965](../figures//fully_saturated_twfe/1965.png)
+
+## ほとんど横ばい
+
+![1975](../figures//fully_saturated_twfe/1975.png)
+
+![1992](../figures//fully_saturated_twfe/1992.png)
+
+![1995](../figures//fully_saturated_twfe/1995.png)
+
+![1997](../figures//fully_saturated_twfe/1997.png)
+
+![1999](../figures//fully_saturated_twfe/1999.png)
+
+![2008](../figures//fully_saturated_twfe/2008.png)
