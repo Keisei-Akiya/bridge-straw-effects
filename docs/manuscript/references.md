@@ -102,6 +102,22 @@ Kim, A. (2020, August 28). _How I Became a Full-Time Freelance Editor (and How Y
 
 Aki Vehtari. (2024). _Prior Choice Recommendations_. Github. アクセス日: 2024 年 1 月 3 日. https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations
 
+<!-- 多くの橋の情報 誤り在り -->
+
+https://www.weblio.jp/wkpja/content/%E6%97%A5%E6%9C%AC%E3%81%AE%E9%9B%A2%E5%B3%B6%E6%9E%B6%E6%A9%8B_%E6%97%A5%E6%9C%AC%E3%81%AE%E9%9B%A2%E5%B3%B6%E6%9E%B6%E6%A9%8B%E3%81%AE%E6%A6%82%E8%A6%81
+
+<!-- 徳島県鳴門市高島 小鳴門大橋の情報 -->
+
+https://www.iot.ac.jp/building/ohgaki/%E5%BE%B3%E5%B3%B6%E3%81%AE%E6%A9%8B/
+
+https://www.setouchi.travel/jp/trip-ideas/f34412/
+
+https://www.miyaji-eng.co.jp/technology/newsletter/media/14/no14-p000.pdf
+
+<!-- 下蒲刈島の蒲刈大橋の情報 -->
+
+https://www.hprc.or.jp/akinada_bridge/#:~:text=%E5%B7%9D%E5%B0%BB%EF%BD%9E%E4%B8%8B%E8%92%B2%E5%88%88%E5%B3%B6%EF%BC%882000,%E3%81%A7%E3%81%AF%E6%97%A5%E6%9C%AC%E4%B8%80%E3%81%AA%E3%82%93%E3%81%A0%E3%80%82
+
 尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日, https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
 
 高知県. (2013). _Untitled_. アクセス日: 2024 年 12 月 14 日, https://www.pref.kochi.lg.jp/doc/syuurakutyousa-kako/file_contents/2013100300213_www_pref_kochi_lg_jp_uploaded_attachment_103308.pdf
