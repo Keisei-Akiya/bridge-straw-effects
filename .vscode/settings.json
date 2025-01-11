@@ -82,5 +82,8 @@
   "terminal.integrated.env.linux": {
     "PYTHONPATH": "${workspaceFolder}"
   },
-  "markdown.marp.themes": ["./docs/presentation/style.css"]
+  "markdown.marp.themes": ["./docs/presentation/style.css"],
+  "markdown.styles": [
+    "/home/keisei/data-analysis/bridge-treatment-effects/docs/manuscript/style.css"
+  ]
 }

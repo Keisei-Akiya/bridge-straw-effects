@@ -1,0 +1,22 @@
+/* @theme style */
+
+@import 'default';
+
+:root {
+  --fw: 1;
+}
+/* ----- レイアウト ----- */
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.center-table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.references {
+  font-size: 0.8em;
+}
