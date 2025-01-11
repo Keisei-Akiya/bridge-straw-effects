@@ -4,6 +4,7 @@
     "axhline",
     "axvline",
     "Çanakkale",
+    "cdotp",
     "covariates",
     "cumsum",
     "Dagdelen",
@@ -45,6 +46,7 @@
     "lmplot",
     "lwrs",
     "marp",
+    "mathbb",
     "mathbf",
     "mathcal",
     "mathjax",
@@ -72,6 +74,7 @@
     "uprs",
     "Vehtari",
     "WAIC",
+    "Weblio",
     "Welsch",
     "xlim",
     "yerr"
