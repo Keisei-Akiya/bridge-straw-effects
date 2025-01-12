@@ -42,6 +42,8 @@ Diamond, J. (1997). _Guns, Germs, and Steel: The Fates of Human Societies_ (1st 
 
 ---
 
+Joshua D. Angrist, Jörn-Steffen Pischke. (2000). _Mostly Harmless Econometrics: An Empiricist's Companion_. Princeton University Press. アクセス日: 2025 年 1 月 12 日. https://www.jstor.org/stable/j.ctvcm4j72
+
 日本離島センター. (1971). _離島統計年報 昭和 45 年版_. 日本離島センター.
 
 日本離島センター. (1976). _離島統計年報 昭和 50 年版_. 日本離島センター.
