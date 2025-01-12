@@ -358,7 +358,7 @@ $60.96\% (23.37\%, 105.44\%)$
 
 ---
 
-![dynamic_effect](../figures/results_dynamic_twfe_log.png)
+![dynamic_effect](../figures/dynamic_twfe/results_dynamic_twfe_log.png)
 
 ※ 介入固定効果($= 0.476$)からのばらつきを示す．
 
