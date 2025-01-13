@@ -12,7 +12,11 @@ Tshitoyan, V., Dagdelen, J., Weston, L., Dunn, A., Rong, Z., Kononova, O., Perss
 
 ---
 
+David C. Hoaglin, Roy E. Welsch. (1978). _The hat matrix in regression and ANOVA_. The American Statistician, 32, 1, 17-22. アクセス日: 2025 年 1 月 13 日. https://www.tandfonline.com/doi/abs/10.1080/00031305.1978.10479237
+
 Miguel A. Juárez, Mark F.J. Steel. (2010). _Model-based clustering of non-Gaussian panel data_. Journal of Business & Economic Statistics, 28, 52-66. アクセス日: 2025 年 1 月 4 日. https://www.jstage.jst.go.jp/article/aija/66/550/66_KJ00004230417/_article/-char/ja/
+
+Liyang Sun, Sarah Abraham. (2020). _Estimating dynamic treatment effects in event studies with heterogeneous treatment effects_. Journal of Econometrics, 225, 2, 175-199. https://www.sciencedirect.com/science/article/abs/pii/S030440762030378X
 
 沖山観介, 後藤春彦. (2001). _離島の基幹産業に与える「架橋政策」の影響に関する研究：佐賀県加部島における農業を事例として_. 日本建築学会計画系論文集, 66, 550, 193-200.
 
@@ -80,25 +84,27 @@ Kim, A. (2020, August 28). _How I Became a Full-Time Freelance Editor (and How Y
 
 Aki Vehtari. (2024). _Prior Choice Recommendations_. Github. アクセス日: 2024 年 1 月 3 日. https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations
 
+DOORS 編集部. (2024). _介入タイミングが複数あるときの差分の差分法：Staggered DiD の紹介_. DOORS DX | ベストな DX への入り口が見つかるメディア. アクセス日: 2025 年 1 月 13 日. https://www.brainpad.co.jp/doors/contents/01_tech_2023-08-22-153000/#%E6%8B%A1%E5%BC%B5%EF%BC%9AStaggered_DiD
+
 _Guinness World Records Longest suspension bridge span_. GuinnessWorldRecords. アクセス日: 2025 年 01 月 12 日. https://www.guinnessworldrecords.com/world-records/longest-bridge-cable-suspension-bridge
 
 _Guinness World Records Longest suspension bridge (anchorage to anchorage)_. GuinnessWorldRecords. アクセス日: 2025 年 01 月 12 日. https://www.guinnessworldrecords.com/world-records/73393-longest-bridge-span-suspension-bridge
 
 <!-- 多くの橋の情報 誤り在り -->
 
-https://www.weblio.jp/wkpja/content/%E6%97%A5%E6%9C%AC%E3%81%AE%E9%9B%A2%E5%B3%B6%E6%9E%B6%E6%A9%8B_%E6%97%A5%E6%9C%AC%E3%81%AE%E9%9B%A2%E5%B3%B6%E6%9E%B6%E6%A9%8B%E3%81%AE%E6%A6%82%E8%A6%81
+_日本の離島架橋_. (2024). Wikipedia. アクセス日: 2025 年 01 月 13 日. https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E9%9B%A2%E5%B3%B6%E6%9E%B6%E6%A9%8B
 
 <!-- 徳島県鳴門市高島 小鳴門大橋の情報 -->
 
-https://www.iot.ac.jp/building/ohgaki/%E5%BE%B3%E5%B3%B6%E3%81%AE%E6%A9%8B/
+ものつくり大学 建設学科 橋梁・構造研究室(大垣研究室). (2024). _徳島の橋，建造物_. アクセス日: 2025 年 1 月 13 日. https://www.iot.ac.jp/building/ohgaki/%E5%BE%B3%E5%B3%B6%E3%81%AE%E6%A9%8B/
 
-https://www.setouchi.travel/jp/trip-ideas/f34412/
+しまなみ海道の橋 10 本、ハシからハシまで！／広島県尾道市・愛媛県今治市. (2021). 瀬戸内 FInder. アクセス日: 2025 年 1 月 13 日. https://www.setouchi.travel/jp/trip-ideas/f34412/
 
-https://www.miyaji-eng.co.jp/technology/newsletter/media/14/no14-p000.pdf
+来島第二大橋 - 発注者 本州四国連絡橋公団. 宮地エンジニアリング株式会社. アクセス日: 1 月 13 日. https://www.miyaji-eng.co.jp/technology/newsletter/media/14/no14-p000.pdf
 
 <!-- 下蒲刈島の蒲刈大橋の情報 -->
 
-https://www.hprc.or.jp/akinada_bridge/#:~:text=%E5%B7%9D%E5%B0%BB%EF%BD%9E%E4%B8%8B%E8%92%B2%E5%88%88%E5%B3%B6%EF%BC%882000,%E3%81%A7%E3%81%AF%E6%97%A5%E6%9C%AC%E4%B8%80%E3%81%AA%E3%82%93%E3%81%A0%E3%80%82
+安芸灘大橋について. 広島県道路公社. アクセス日: 2025 年 1 月 13 日. https://www.hprc.or.jp/akinada_bridge/#:~:text=%E5%B7%9D%E5%B0%BB%EF%BD%9E%E4%B8%8B%E8%92%B2%E5%88%88%E5%B3%B6%EF%BC%882000,%E3%81%A7%E3%81%AF%E6%97%A5%E6%9C%AC%E4%B8%80%E3%81%AA%E3%82%93%E3%81%A0%E3%80%82
 
 尾道市. (2024). _基幹統計調査の結果_. 尾道市ホームページ. アクセス日: 2024 年 12 月 14 日. https://www.city.onomichi.hiroshima.jp/soshiki/2/5481.html
 
