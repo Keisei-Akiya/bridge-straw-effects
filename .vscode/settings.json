@@ -20,6 +20,8 @@
     "elpd",
     "errorbar",
     "fillna",
+    "fittedvalues",
+    "fontsize",
     "forestplot",
     "FSTWFE",
     "Gelman",
